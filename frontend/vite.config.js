@@ -5,6 +5,14 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
+    chunkSizeWarningLimit: 2000,
     outDir: "dist", // This is the directory Vite will output the build files to
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"], // Example: split large dependencies like react or lodash
+        },
+      },
+    },
   },
 });
