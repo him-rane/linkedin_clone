@@ -53,7 +53,7 @@ export const signup = async (req, res) => {
     );
 
     // Construct the activation URL dynamically based on the environment
-    const activationUrl = `${process.env.CLIENT_URL}/activate?token=${activationToken}`;
+    const activationUrl = `${window.location.origin}/activate?token=${activationToken}`;
 
     // Send activation email
     await sendMail(user.email, activationUrl, "activation");
